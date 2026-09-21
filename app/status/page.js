@@ -27,7 +27,7 @@ export default function StatusPage() {
   const load = async () => {
     setLoading(true);
     try {
-      const data = await api.getAdminStats();
+      const data = await api.getStatus();
       setStats(data);
       setBridgeError(null);
       setUpdated(new Date());

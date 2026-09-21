@@ -9,7 +9,6 @@ import {
 } from 'lucide-react';
 import { api } from '../../../lib/api';
 import { useAuth } from '../../../lib/auth';
-import { SUPERUSER_IDS } from '../../../lib/config';
 import { azeliaFilters } from '../../../lib/azelia-data';
 
 const defaultConfig = {
@@ -41,11 +40,8 @@ export default function ServerDashboardPage() {
     if (!guildId || !user) return;
     setLoading(true);
     try {
-      const owner = SUPERUSER_IDS.includes(user.id);
-      const ownGuild = user.guilds?.find((g) => g.id === guildId);
-      const authData = ownGuild ? null : await api.authUser(user.id).catch(() => null);
-      const guild = ownGuild || authData?.guilds?.find((g) => g.id === guildId) || null;
-      const access = Boolean(owner || guild?.isOwner || guild?.isAdmin || guild?.permissions?.manageGuild);
+      const guild = user.guilds?.find((g) => g.id === guildId) || null;
+      const access = Boolean(guild?.isOwner || guild?.isAdmin || guild?.permissions?.manageGuild);
       setGuildInfo(guild);
       setAllowed(access);
 

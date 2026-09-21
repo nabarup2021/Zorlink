@@ -17,12 +17,11 @@ import {
   Radio,
   Server,
 } from 'lucide-react';
-import { api } from '../../lib/api';
 import { useAuth } from '../../lib/auth';
 import { BOT_INVITE_URL } from '../../lib/config';
 
 export default function ServersPage() {
-  const { user, login, loading: authLoading } = useAuth();
+  const { user, loginWithDiscord, loading: authLoading } = useAuth();
   const [allGuilds, setAllGuilds] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
@@ -40,17 +39,8 @@ export default function ServersPage() {
 
       setLoading(true);
       try {
-        // 2. Load from authenticated session
-        if (user?.guilds && Array.isArray(user.guilds) && user.guilds.length > 0) {
-          setAllGuilds(user.guilds);
-        } else if (user?.id) {
-          const authData = await api.authUser(user.id).catch(() => null);
-          if (authData?.guilds && authData.guilds.length > 0) {
-            setAllGuilds(authData.guilds);
-          } else {
-            setAllGuilds([]);
-          }
-        }
+        const guilds = Array.isArray(user.guilds) ? user.guilds : [];
+        setAllGuilds(guilds);
       } catch {
         setAllGuilds([]);
       } finally {
@@ -148,7 +138,7 @@ export default function ServersPage() {
 
         <div className="pt-2">
           <button
-            onClick={login}
+            onClick={loginWithDiscord}
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-2xl bg-[#5865F2] hover:bg-[#4752C4] text-white font-bold text-sm shadow-xl shadow-[#5865F2]/25 transition-all cursor-pointer"
           >
             <LogIn className="w-4 h-4" /> Login with Discord
