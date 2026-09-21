@@ -28,7 +28,7 @@ function getTrackArtwork(track) {
       return `https://i.ytimg.com/vi/${ytMatch[1]}/hqdefault.jpg`;
     }
   }
-  return track?.artworkUrl || '/azelia-pfp.gif';
+  return track?.artworkUrl || '/azelia-pfp.png';
 }
 
 function fmtTime(ms) {
@@ -84,7 +84,7 @@ function TrackSuggestionItem({ track, index, isActive, onSelect, onPlay, onAddQu
           loading="lazy"
           onError={(e) => {
             e.currentTarget.onerror = null;
-            e.currentTarget.src = '/azelia-pfp.gif';
+            e.currentTarget.src = '/azelia-pfp.png';
           }}
           className="w-full h-full object-cover"
         />
