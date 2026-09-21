@@ -1,12 +1,27 @@
 /** @type {import('next').NextConfig} */
-const requiredProductionEnv = ['DISCORD_CLIENT_ID', 'SESSION_SECRET'];
+const requiredProductionEnv = ['DISCORD_CLIENT_ID', 'SESSION_SECRET', 'SITE_ORIGIN'];
 const missingProductionEnv = requiredProductionEnv.filter((name) => !process.env[name]);
 
 if (process.env.NODE_ENV === 'production' && missingProductionEnv.length) {
   throw new Error(`Missing required production environment variables: ${missingProductionEnv.join(', ')}`);
 }
 
-const siteOrigin = (process.env.SITE_ORIGIN || 'https://azelia.site').replace(/\/+$/, '');
+const siteOrigin = (process.env.SITE_ORIGIN || 'http://localhost:3000').replace(/\/+$/, '');
+
+try {
+  const originUrl = new URL(siteOrigin);
+  if (
+    !['http:', 'https:'].includes(originUrl.protocol) ||
+    originUrl.username ||
+    originUrl.password ||
+    originUrl.search ||
+    originUrl.hash
+  ) {
+    throw new Error();
+  }
+} catch {
+  throw new Error('SITE_ORIGIN must be a valid HTTP or HTTPS origin.');
+}
 
 const securityHeaders = [
   { key: 'X-Frame-Options', value: 'DENY' },
