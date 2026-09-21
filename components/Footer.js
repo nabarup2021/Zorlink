@@ -14,7 +14,7 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-3">
               <img src="/azelia-pfp.gif" alt="Azelia" className="w-9 h-9 rounded-full object-cover ring-2 ring-azelia-accent/40" />
               <span className="text-xl font-black tracking-tight text-white flex items-center gap-0.5">
-                Flix<span className="text-azelia-accent">o</span>
+                Azelia
               </span>
             </Link>
             <p className="text-gray-400 text-xs leading-relaxed max-w-sm">
