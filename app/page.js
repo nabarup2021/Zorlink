@@ -38,7 +38,7 @@ export default function HomePage() {
   return (
     <div className="space-y-24 py-6">
       <section className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#110d1a] shadow-2xl">
-        <img src="/azelia-banner.png" alt="Azelia banner" className="absolute inset-0 h-full w-full object-cover opacity-35" />
+        <img src="/azelia-banner.gif" alt="Azelia banner" className="absolute inset-0 h-full w-full object-cover opacity-35" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#09090d] via-[#09090dcc] to-transparent" />
         <div className="relative grid lg:grid-cols-[1.15fr_0.85fr] gap-10 p-8 sm:p-12 lg:p-16 items-end min-h-[540px]">
           <div className="space-y-7">
