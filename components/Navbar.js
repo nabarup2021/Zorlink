@@ -36,7 +36,7 @@ export default function Navbar() {
       {/* Left Brand Logo */}
       <Link href="/" className="flex items-center gap-3 group">
         <img
-          src="/azelia-pfp.gif"
+          src="/azelia-pfp.png"
           alt="Azelia"
           className="w-8 h-8 rounded-full object-cover ring-2 ring-azelia-accent/40 group-hover:scale-105 transition-transform"
         />
@@ -90,7 +90,7 @@ export default function Navbar() {
               className="flex items-center gap-2.5 bg-[#181524] hover:bg-[#201c30] border border-white/10 px-3.5 py-2 rounded-2xl transition-all shadow-lg cursor-pointer"
             >
               <img
-                src={user.avatar || '/azelia-pfp.gif'}
+                src={user.avatar || '/azelia-pfp.png'}
                 alt=""
                 className="w-6 h-6 rounded-full object-cover ring-1 ring-azelia-accent/50"
               />
