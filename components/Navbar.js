@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LogOut, Sparkles, User, ChevronDown, Server, Disc } from 'lucide-react';
+import { LogOut, Sparkles, ChevronDown, Server, Disc } from 'lucide-react';
 import { useAuth } from '../lib/auth';
 
 export default function Navbar() {
@@ -41,7 +41,7 @@ export default function Navbar() {
           className="w-8 h-8 rounded-full object-cover ring-2 ring-azelia-accent/40 group-hover:scale-105 transition-transform"
         />
         <span className="text-2xl font-black tracking-tight text-white flex items-center gap-0.5">
-          Flix<span className="text-azelia-accent">o</span>
+          Azelia
         </span>
       </Link>
 
