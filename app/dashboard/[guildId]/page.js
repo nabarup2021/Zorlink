@@ -166,7 +166,7 @@ export default function ServerDashboardPage() {
     <div className="max-w-6xl mx-auto py-5 space-y-7">
       <section className="flex flex-col sm:flex-row sm:items-center justify-between gap-5">
         <div className="flex items-center gap-4">
-          <img src={guildInfo?.icon || '/azelia-pfp.gif'} alt="" className="h-14 w-14 rounded-2xl object-cover ring-2 ring-white/10" />
+          <img src={guildInfo?.icon || '/azelia-pfp.png'} alt="" className="h-14 w-14 rounded-2xl object-cover ring-2 ring-white/10" />
           <div>
             <h1 className="text-2xl sm:text-3xl font-black text-white">{guildInfo?.name || `Server ${guildId}`}</h1>
             <p className="mt-1 text-xs text-gray-500 font-mono">{guildId} · Azelia Control Center</p>
@@ -261,7 +261,7 @@ export default function ServerDashboardPage() {
             {current ? (
               <>
                 <div className="flex flex-col sm:flex-row gap-5">
-                  <img src={current.artworkUrl || '/azelia-pfp.gif'} alt="" className="h-28 w-28 rounded-2xl object-cover bg-black" />
+                  <img src={current.artworkUrl || '/azelia-pfp.png'} alt="" className="h-28 w-28 rounded-2xl object-cover bg-black" />
                   <div className="min-w-0 flex-1">
                     <div className="text-[10px] uppercase tracking-wider text-purple-300">Now Playing</div>
                     <h2 className="mt-2 text-xl font-black text-white truncate">{current.title}</h2>
@@ -311,7 +311,7 @@ export default function ServerDashboardPage() {
             {queue.length ? queue.map((track, index) => (
               <div key={`${track.id || track.identifier || index}-${index}`} className="flex items-center gap-4 px-6 py-4 border-b border-white/[0.05]">
                 <span className="w-6 text-[11px] font-mono text-gray-600">{index + 1}</span>
-                <img src={track.artworkUrl || '/azelia-pfp.gif'} alt="" className="h-10 w-10 rounded-xl object-cover" />
+                <img src={track.artworkUrl || '/azelia-pfp.png'} alt="" className="h-10 w-10 rounded-xl object-cover" />
                 <div className="min-w-0 flex-1">
                   <div className="text-xs font-bold text-white truncate">{track.title || 'Unknown track'}</div>
                   <div className="text-[10px] text-gray-600 truncate">{track.author || track.artist || 'Unknown artist'}</div>
