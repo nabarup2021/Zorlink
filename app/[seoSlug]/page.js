@@ -5,7 +5,7 @@ import { SEO_KEYWORDS, SEO_PAGE_ORDER_ALL, seoPageMap } from '../../lib/seo-page
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return SEO_PAGE_ORDER_ALL.filter((seoSlug) => !['features', 'commands', 'premium'].includes(seoSlug)).map((seoSlug) => ({ seoSlug }));
+  return SEO_PAGE_ORDER_ALL.filter((seoSlug) => !['features', 'commands', 'premium', 'sitemap'].includes(seoSlug)).map((seoSlug) => ({ seoSlug }));
 }
 
 export async function generateMetadata({ params }) {
