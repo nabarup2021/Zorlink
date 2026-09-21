@@ -75,11 +75,11 @@ export default function GlobalMusicBar() {
         <div className="flex items-center gap-3.5 w-1/4 min-w-0">
           <Link href="/player" className="relative group shrink-0">
             <img
-              src={currentTrack?.artworkUrl || '/azelia-pfp.gif'}
+              src={currentTrack?.artworkUrl || '/azelia-pfp.png'}
               alt=""
               onError={(e) => {
                 e.currentTarget.onerror = null;
-                e.currentTarget.src = '/azelia-pfp.gif';
+                e.currentTarget.src = '/azelia-pfp.png';
               }}
               className="w-12 h-12 rounded-xl object-cover ring-1 ring-white/10 shadow-lg group-hover:scale-105 transition-transform"
             />
