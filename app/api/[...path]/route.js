@@ -5,6 +5,7 @@ import {
   getManageableGuild,
   getManageableGuilds,
   getProxyAuthType,
+  getSiteOrigin,
   isAllowedOrigin,
   isSuperuser,
   readSession,
