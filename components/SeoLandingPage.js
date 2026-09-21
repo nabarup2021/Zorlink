@@ -144,6 +144,7 @@ export default function SeoLandingPage({ page }) {
             <Link href="/inviteAzelia" className="inline-flex items-center gap-2 rounded-2xl bg-azelia-accent px-5 py-3.5 text-sm font-extrabold text-white shadow-xl shadow-azelia-accent/20">
               Invite Azelia <ArrowRight className="h-4 w-4" />
             </Link>
+            <a href="https://discordbotlist.com/bots/azelia/upvote" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-2xl border border-amber-300/20 bg-amber-300/10 px-5 py-3.5 text-sm font-bold text-amber-200">Vote on DiscordBotList</a>
             <Link href="/commands" className="inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-5 py-3.5 text-sm font-bold text-white">
               Browse Commands <ListMusic className="h-4 w-4" />
             </Link>
