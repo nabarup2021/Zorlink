@@ -33,3 +33,7 @@ bun.lock
 
 # temp files
 temp_body.json
+
+# premium assets kept local
+public/azelia-premium-banner.gif
+public/azelia-premium-pfp.png
