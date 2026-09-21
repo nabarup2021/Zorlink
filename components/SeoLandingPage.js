@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, CheckCircle2, Crown, ExternalLink, Gauge, ListMusic, Music2, Search, Server, ShieldCheck, Sparkles, Waves } from 'lucide-react';
-import { azeliaBrand, azeliaCommands, azeliaPremiumPlans, azeliaTeam } from '../lib/azelia-data';
+import { ArrowRight, Crown, ExternalLink, ListMusic, Music2, ShieldCheck, Sparkles } from 'lucide-react';
+import { azeliaBrand, azeliaPremiumPlans, azeliaTeam } from '../lib/azelia-data';
+import CommandDirectory from './CommandDirectory';
 import { SEO_COMMON_SECTIONS, seoPageMap } from '../lib/seo-pages';
 
 function Section({ title, children }) {
@@ -69,28 +70,6 @@ function Pricing() {
   );
 }
 
-function CommandGrid() {
-  return (
-    <div className="grid md:grid-cols-2 gap-4">
-      {azeliaCommands.map((command) => (
-        <article key={`${command.category}-${command.name}`} className="rounded-3xl border border-white/[0.06] bg-[#121019] p-5">
-          <div className="flex items-start justify-between gap-4">
-            <div>
-              <div className="font-mono text-sm font-bold text-purple-300">{azeliaBrand.defaultPrefix}{command.name}</div>
-              <div className="mt-1 text-[10px] uppercase tracking-wider text-gray-600">{command.categoryLabel || command.category}</div>
-            </div>
-            {command.slash && <span className="rounded-lg bg-emerald-500/10 px-2 py-1 text-[10px] font-bold text-emerald-300">Slash</span>}
-          </div>
-          <p className="mt-4 text-xs leading-6 text-gray-400">{command.description || 'Command metadata is available in the current Azelia catalog.'}</p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            <span className="rounded-lg bg-white/5 px-2 py-1 text-[10px] font-mono text-gray-500">{azeliaBrand.defaultPrefix}{command.usage || command.name}</span>
-            {(command.category || '').includes('premium') && <span className="rounded-lg bg-amber-400/10 px-2 py-1 text-[10px] font-bold text-amber-300">Premium</span>}
-          </div>
-        </article>
-      ))}
-    </div>
-  );
-}
 
 function TeamCards() {
   return (
@@ -200,7 +179,7 @@ export default function SeoLandingPage({ page }) {
       {page.commands && (
         <Section title="Command reference">
           <p>Commands below are rendered from the current Azelia dashboard data. The configured default prefix is <strong className="text-white">{azeliaBrand.defaultPrefix}</strong>. Slash capability appears only on commands whose source metadata enables it.</p>
-          <CommandGrid />
+          <CommandDirectory />
         </Section>
       )}
 
