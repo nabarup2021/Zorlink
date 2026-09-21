@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import GlobalMusicBar from '../components/GlobalMusicBar';
 import WebAudioEngine from '../components/WebAudioEngine';
+import ScrollReveal from '../components/ScrollReveal';
 import { AuthProvider } from '../lib/auth';
 import { MusicProvider } from '../lib/music';
 
@@ -46,6 +47,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="bg-[#0a0812] text-white antialiased overflow-x-hidden">
+        <ScrollReveal />
         <AuthProvider>
           <MusicProvider>
             <LayoutContent>{children}</LayoutContent>
