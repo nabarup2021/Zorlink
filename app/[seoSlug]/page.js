@@ -1,11 +1,11 @@
 import { notFound } from 'next/navigation';
 import SeoLandingPage from '../../components/SeoLandingPage';
-import { SEO_PAGE_ORDER_ALL, seoPageMap } from '../../lib/seo-pages';
+import { SEO_KEYWORDS, SEO_PAGE_ORDER_ALL, seoPageMap } from '../../lib/seo-pages';
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return SEO_PAGE_ORDER_ALL.map((seoSlug) => ({ seoSlug }));
+  return SEO_PAGE_ORDER_ALL.filter((seoSlug) => !['features', 'commands', 'premium'].includes(seoSlug)).map((seoSlug) => ({ seoSlug }));
 }
 
 export async function generateMetadata({ params }) {
@@ -16,6 +16,7 @@ export async function generateMetadata({ params }) {
     description: page.description,
     keywords: [
       page.keyword,
+      ...SEO_KEYWORDS,
       'Azelia',
       'ZorveX Development',
       'Discord music bot',
@@ -30,6 +31,9 @@ export async function generateMetadata({ params }) {
       description: page.description,
       type: 'website',
       siteName: 'Azelia',
+    },
+    openGraph: {
+      images: ['/azelia-banner.gif'],
     },
     twitter: {
       card: 'summary_large_image',
