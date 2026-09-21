@@ -98,7 +98,6 @@ function SitemapLinks() {
     </div>
   );
 }
-
 export default function SeoLandingPage({ page }) {
   const commonSections = SEO_COMMON_SECTIONS;
   const isLegal = page.kind === 'legal';
