@@ -31,8 +31,6 @@ export async function generateMetadata({ params }) {
       description: page.description,
       type: 'website',
       siteName: 'Azelia',
-    },
-    openGraph: {
       images: ['/azelia-banner.gif'],
     },
     twitter: {
