@@ -45,6 +45,7 @@ export default function Footer() {
             <h4 className="text-xs font-bold text-white uppercase tracking-wider">Community</h4>
             <ul className="space-y-2 text-xs">
               <li><Link href="/team" className="hover:text-white transition-colors">Meet the Team</Link></li>
+              <li><a href="https://discordbotlist.com/bots/azelia/upvote" target="_blank" rel="noreferrer" className="hover:text-white transition-colors flex items-center gap-1">Vote on DiscordBotList <ExternalLink className="w-3 h-3 opacity-60" /></a></li>
               <li>
                 <a href="https://discord.gg/BD4zjEh9Qr" target="_blank" rel="noreferrer" className="hover:text-white transition-colors flex items-center gap-1">
                   Support Server <ExternalLink className="w-3 h-3 opacity-60" />
