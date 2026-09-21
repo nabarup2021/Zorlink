@@ -12,7 +12,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="col-span-2 space-y-4">
             <Link href="/" className="flex items-center gap-3">
-              <img src="/azelia-pfp.gif" alt="Azelia" className="w-9 h-9 rounded-full object-cover ring-2 ring-azelia-accent/40" />
+              <img src="/azelia-pfp.png" alt="Azelia" className="w-9 h-9 rounded-full object-cover ring-2 ring-azelia-accent/40" />
               <span className="text-xl font-black tracking-tight text-white flex items-center gap-0.5">
                 Azelia
               </span>
@@ -51,8 +51,8 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="https://top.gg" target="_blank" rel="noreferrer" className="hover:text-white transition-colors flex items-center gap-1">
-                  Vote on Top.gg <ExternalLink className="w-3 h-3 opacity-60" />
+                <a href="https://discordbotlist.com/bots/azelia/upvote" target="_blank" rel="noreferrer" className="hover:text-white transition-colors flex items-center gap-1">
+                  Vote on DiscordBotList <ExternalLink className="w-3 h-3 opacity-60" />
                 </a>
               </li>
               <li><Link href="/faq" className="hover:text-white transition-colors">FAQ & Guides</Link></li>
