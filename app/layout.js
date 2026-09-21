@@ -40,6 +40,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="dark">
       <head>
+        <link rel="icon" href="/azelia-icon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/azelia-pfp.png" />
         <title>Azelia — Next-Gen Discord Music Bot & Web Player</title>
         <meta
           name="description"
