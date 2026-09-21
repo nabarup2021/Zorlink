@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { Check, Copy, Grid2X2, Search } from 'lucide-react';
-import { azeliaCommandCategories, azeliaCommands } from '../../lib/azelia-data';
+import { azeliaBrand, azeliaCommandCategories, azeliaCommands } from '../../lib/azelia-data';
 
 const categoryLabels = {
   all: 'All',
@@ -40,7 +40,7 @@ export default function CommandsPage() {
   }), [category, query]);
 
   const copy = async (name) => {
-    await navigator.clipboard?.writeText(`. ${name}`.replace('. ', '.'));
+    await navigator.clipboard?.writeText(`${azeliaBrand.defaultPrefix}${name}`);
     setCopied(name);
     setTimeout(() => setCopied(null), 1600);
   };
@@ -85,7 +85,7 @@ export default function CommandsPage() {
               <article key={`${command.category}-${command.name}`} className="rounded-3xl border border-white/[0.06] bg-[#121019] p-5 hover:border-azelia-accent/25 transition-all">
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <div className="font-mono text-sm font-bold text-purple-300">.{command.name}</div>
+                    <div className="font-mono text-sm font-bold text-purple-300">{azeliaBrand.defaultPrefix}{command.name}</div>
                     <div className="mt-1 text-[10px] uppercase tracking-wider text-gray-600">{categoryLabels[command.category] || command.category}</div>
                   </div>
                   <button onClick={() => copy(command.name)} className="rounded-xl border border-white/10 bg-white/5 p-2 text-gray-500 hover:text-white">
