@@ -123,9 +123,31 @@ function SitemapLinks() {
 export default function SeoLandingPage({ page }) {
   const commonSections = SEO_COMMON_SECTIONS;
   const isLegal = page.kind === 'legal';
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': isLegal ? 'WebPage' : 'Article',
+    headline: page.title,
+    description: page.description,
+    url: 'https://azelia.site/' + page.slug,
+    publisher: {
+      '@type': 'Organization',
+      name: 'Azelia',
+    },
+    ...(page.faq?.length ? {
+      mainEntity: page.faq.map(([question, answer]) => ({
+        '@type': 'Question',
+        name: question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: answer,
+        },
+      })),
+    } : {}),
+  };
 
   return (
     <div className="max-w-6xl mx-auto py-6 space-y-16">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <section className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#110d1a] p-8 sm:p-12 lg:p-14">
         <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_top_right,rgba(112,77,237,.45),transparent_42%),radial-gradient(circle_at_bottom_left,rgba(218,44,255,.25),transparent_35%)]" />
         <div className="relative max-w-4xl">
