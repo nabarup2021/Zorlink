@@ -270,7 +270,6 @@ Output: `build/libs/zorlink-1.0.0.jar`
 ## Credits
 
 - **[ZorveX Development](https://github.com/nabarup2021)** — Plugin author
-- **[xylen-py / SlugYZeon](https://github.com/xylen-py/SlugYZeon)** — YTCDN architecture reference
 - **[topi314 / LavaSrc](https://github.com/topi314/LavaSrc)** — Mirror system inspiration
 - **[lavalink-devs](https://github.com/lavalink-devs)** — Lavalink plugin template
 
