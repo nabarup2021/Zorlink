@@ -1,0 +1,72 @@
+name: Build & Deploy Zorlink
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Grant Gradle execute permission
+        run: chmod +x gradlew
+
+      - name: Build JAR
+        run: ./gradlew :plugin:jar
+
+      - name: Find built JAR
+        id: jar
+        run: echo "path=$(find plugin/build/libs -name '*.jar' | head -1)" >> $GITHUB_OUTPUT
+
+      - name: Upload JAR to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          source: ${{ steps.jar.outputs.path }}
+          target: ${{ secrets.LAVALINK_PLUGINS_PATH }}
+          strip_components: 3
+
+      - name: Restart Lavalink
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            if systemctl is-active --quiet lavalink; then
+              sudo systemctl restart lavalink
+            else
+              pkill -f lavalink || true
+              cd ${{ secrets.LAVALINK_PLUGINS_PATH }}/..
+              nohup java -jar Lavalink.jar &
+            fi
+
+      - name: Notify Discord
+        if: always()
+        env:
+          WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          STATUS: ${{ job.status }}
+        run: |
+          if [ "$STATUS" = "success" ]; then
+            COLOR=5763719
+            MSG="✅ Zorlink deployed successfully"
+          else
+            COLOR=15548997
+            MSG="❌ Zorlink deploy failed"
+          fi
+          curl -s -X POST "$WEBHOOK" \
+            -H "Content-Type: application/json" \
+            -d "{\"embeds\":[{\"title\":\"$MSG\",\"description\":\"Branch: \`main\` | Commit: \`${GITHUB_SHA:0:7}\`\",\"color\":$COLOR}]}"

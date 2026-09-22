@@ -1,0 +1,86 @@
+lavalink:
+  server:
+    password: "youshallnotpass"
+    sources:
+      youtube: true
+      soundcloud: true
+      http: true
+
+plugins:
+  zorlink:
+    webhookEnabled: true
+    webhookUrl: "https://discord.com/api/webhooks/YOUR_ID/YOUR_TOKEN"
+    webhookBotName: "Zorlink"
+    logTrackEvents: true
+    logSearchEvents: false
+
+    cdn:
+      enabled: true
+      url: "https://zorlink-ytcdn.vercel.app"
+      timeoutMs: 4000
+
+    backend:
+      enabled: false
+      url: ""
+      apiKey: ""
+      timeoutMs: 5000
+
+    spotify:
+      enabled: true
+      clientId: "YOUR_SPOTIFY_CLIENT_ID"
+      clientSecret: "YOUR_SPOTIFY_CLIENT_SECRET"
+      countryCode: "IN"
+      searchLimit: 10
+      recsApiUrl: "https://zorlink-spotify.vercel.app"
+      providers:
+        - "ytsearch:\"%ISRC%\""
+        - "ytmsearch:%QUERY%"
+        - "ytsearch:%QUERY%"
+
+    deezer:
+      enabled: true
+      searchLimit: 10
+      providers:
+        - "ytsearch:\"%ISRC%\""
+        - "ytsearch:%QUERY%"
+
+    amazonmusic:
+      enabled: true
+      searchLimit: 10
+      providers:
+        - "ytsearch:\"%ISRC%\""
+        - "ytsearch:%QUERY%"
+
+    jiosaavn:
+      enabled: true
+      quality: "320kbps"
+      searchLimit: 10
+      providers:
+        - "ytsearch:\"%ISRC%\""
+        - "ytsearch:%QUERY%"
+
+    gaana:
+      enabled: true
+      searchLimit: 10
+      providers:
+        - "ytsearch:%QUERY%"
+
+    instagram:
+      enabled: true
+
+    pandora:
+      enabled: true
+      tokenApiUrl: "https://get.1lucas1apk.fun/pandora/gettoken"
+      csrfToken: ""
+      preferTokenApi: true
+      searchLimit: 6
+      providers:
+        - "ytsearch:\"%ISRC%\""
+        - "ytsearch:%QUERY%"
+
+    soundcloud:
+      enabled: true
+
+server:
+  port: 2333
+  address: 0.0.0.0
