@@ -55,7 +55,7 @@
 ```yaml
 lavalink:
   plugins:
-    - dependency: "com.github.zorvexdev.zorlink:zorlink:VERSION"
+    - dependency: "com.github.nabarup2021.zorlink:zorlink:VERSION"
       repository: https://jitpack.io
 ```
 
